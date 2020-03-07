@@ -1,0 +1,39 @@
+//JSX -JavaScript XML => by React 
+//Javascript js sintax extention provaded by react
+//Babel => JSX complilar
+
+//RENDER ONLY THE SUBTITLE IF EXISTS
+{app.subtitle && <p>{app.subtitle}</p>}
+//RENDER P TAG IF OPTIONS.LENGTH > 0 'HERE ARE YOUR OPTIONS' OTHERWISE 'NO OPTIONS'
+ <p>{app.options.length > 0 ? 'Here are your options' : 'No options'  } </p>
+
+
+
+ const appRoot = document.getElementById('app')
+ 
+let count = 0
+const addOne = () => {
+  count++
+  renderCount()
+}
+const minusOne = () => {
+  count--
+  renderCount()
+}
+const reset = () => {
+  count = 0
+  renderCount()
+}
+const appRoot = document.getElementById('app')
+const renderCount = () => {
+  const templateTwo = (
+    <div>
+      <h1> Count: {count}</h1>
+      <button onClick={addOne}> +1 </button>
+      <button onClick={minusOne}>-1</button>
+      <button onClick={reset}>Reset</button>
+    </div>
+ )
+ ReactDOM.render(templateTwo, appRoot)
+}
+renderCount()
