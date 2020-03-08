@@ -1,5 +1,6 @@
 'use strict';
 
+//const whit main object 
 var app = {
   title: 'Indesicion App',
   subtitle: 'I will deside your future',
@@ -23,10 +24,11 @@ var onFormSubmit = function onFormSubmit(e) {
 var count = 0;
 
 var remove = function remove() {
-  app.options = [];
-  renderForm();
+  app.options = [''];
 };
 
+// const onMakeDecision = () => const randomNum = Math.random()
+var appRoot = document.getElementById('app');
 var renderForm = function renderForm() {
   var template = React.createElement(
     'div',
@@ -45,27 +47,19 @@ var renderForm = function renderForm() {
     React.createElement(
       'p',
       null,
-      app.options.length
-    ),
-    React.createElement(
-      'p',
-      null,
-      app.options.length > 0 ? 'Here are your options' : 'No options',
+      app.options.length > 0 ? 'Here are your option' : 'No options',
       ' '
     ),
     React.createElement(
       'ol',
       null,
-      React.createElement(
-        'li',
-        null,
-        'Item one'
-      ),
-      React.createElement(
-        'li',
-        null,
-        'Item two'
-      )
+      app.options.map(function (option) {
+        return React.createElement(
+          'li',
+          { key: option },
+          option
+        );
+      })
     ),
     React.createElement(
       'form',
@@ -80,25 +74,11 @@ var renderForm = function renderForm() {
         'button',
         { onClick: remove },
         'Remove All'
-      ),
-      [React.createElement(
-        'p',
-        { key: '1' },
-        'a'
-      ), React.createElement(
-        'p',
-        { key: '2' },
-        'b'
-      ), React.createElement(
-        'p',
-        { key: '3' },
-        'c'
-      )]
+      )
     )
   );
   ReactDOM.render(template, appRoot);
 };
 
-var appRoot = document.getElementById('app');
 renderForm();
-renderRemove();
+remove();
